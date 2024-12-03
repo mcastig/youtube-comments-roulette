@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommentRouletteComponent } from "./comment-roulette/comment-roulette.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommentRouletteComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

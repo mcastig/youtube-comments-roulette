@@ -1,0 +1,49 @@
+.comment-roulette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-sizing: border-box;
+
+  &__container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+
+    input[type="text"], button {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      width: calc(100% - 22px);
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      width: 200px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .comment-roulette {
+    &__container {
+      padding: 15px;
+
+      input[type="text"], button {
+        margin: 8px 0;
+        padding: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}

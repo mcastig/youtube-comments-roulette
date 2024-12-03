@@ -1,0 +1,13 @@
+<section class="comment-roulette">
+  <div class="comment-roulette__container">
+    <h1>Give Away 🎁</h1>
+    <input type="text" [(ngModel)]="youtubeVideoUrl" [placeholder]="placeholder" />
+    <br>
+    <button (click)="getRandomComment()">Get random comment</button>
+    <div *ngIf="commentCount !== null">Amount of comments: {{ commentCount }}</div>
+    <div *ngIf="videoIdCode">
+      Video: <a [href]="youtubeVideoUrl" target="_blank">{{ videoIdCode }}</a>
+    </div>
+    <div *ngIf="commentResult">{{ commentResult }}</div>
+  </div>
+</section>
