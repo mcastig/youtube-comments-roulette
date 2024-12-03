@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CommentRouletteComponent } from './comment-roulette.component';
 
 describe('CommentRouletteComponent', () => {
