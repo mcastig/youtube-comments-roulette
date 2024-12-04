@@ -7,17 +7,13 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class YoutubeService {
-  private apiKey: string = environment.apiKey;
+  private apiUrl = 'https://www.googleapis.com/youtube/v3';
+  private apiKey: string = environment.apiKey; // Usa la clave de API desde environment
 
   constructor(private http: HttpClient) {}
 
-  getVideoComments(videoId: string): Observable<any> {
-    const url = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${this.apiKey}`;
-    return this.http.get<any>(url);
-  }
-
-  getVideoDetails(videoId: string): Observable<any> {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${this.apiKey}`;
+  getComments(videoId: string, pageToken: string = ''): Observable<any> {
+    const url = `${this.apiUrl}/commentThreads?part=snippet,replies&videoId=${videoId}&key=${this.apiKey}&pageToken=${pageToken}&maxResults=100`;
     return this.http.get<any>(url);
   }
 }

@@ -1,13 +1,35 @@
 <section class="comment-roulette">
   <div class="comment-roulette__container">
     <h1>Give Away 🎁</h1>
-    <input type="text" [(ngModel)]="youtubeVideoUrl" [placeholder]="placeholder" />
+    <input type="text" [(ngModel)]="youtubeVideoUrl" [placeholder]="placeHolder" />
     <br>
-    <button (click)="getRandomComment()">Get random comment</button>
-    <div *ngIf="commentCount !== null">Amount of comments: {{ commentCount }}</div>
-    <div *ngIf="videoIdCode">
-      Video: <a [href]="youtubeVideoUrl" target="_blank">{{ videoIdCode }}</a>
+    <div>
+      <input type="checkbox" id="includeReplies" [(ngModel)]="includeReplies" />
+      <label for="includeReplies">Agregar respuestas a los comentarios</label>
     </div>
-    <div *ngIf="commentResult">{{ commentResult }}</div>
+    <div>
+      <input type="checkbox" id="filterDuplicates" [(ngModel)]="filterDuplicates" />
+      <label for="filterDuplicates">Filtrar usuarios duplicados</label>
+    </div>
+    <div>
+      <input type="checkbox" id="filterByWords" [(ngModel)]="filterByWords" (change)="toggleWordFilter()" />
+      <label for="filterByWords">Filtrar comentarios por palabras o hashtags</label>
+    </div>
+    <div *ngIf="filterByWords">
+      <input type="text" [(ngModel)]="filterWords" placeholder="Palabras o hashtags, separados por comas" />
+    </div>
+    <br>
+    <button (click)="startRoulette()">Elegir Ganador</button>
+    <div class="roulette" *ngIf="isRouletteRunning">
+      <div class="roulette__item">{{ displayComment.text }}</div>
+    </div>
+    <div *ngIf="!isRouletteRunning && commentResult">
+      <p>{{ commentResult.text }}</p>
+      <p><a [href]="commentResult.videoUrl" target="_blank">Ir al comentario</a></p>
+      <p>
+        <strong>Ganador:</strong>
+        <a [href]="commentResult.channelUrl" target="_blank">]{{ commentResult.author }}</a>
+      </p>
+    </div>
   </div>
 </section>

@@ -29,13 +29,33 @@
       color: white;
       border: none;
       border-radius: 4px;
-      width: 200px;
+      width: 60%;
     }
   }
-}
 
-@media (max-width: 600px) {
-  .comment-roulette {
+  .roulette {
+    margin-top: 20px;
+    overflow: hidden;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__item {
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      animation: blink 1s linear infinite;
+    }
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
     &__container {
       padding: 15px;
 
